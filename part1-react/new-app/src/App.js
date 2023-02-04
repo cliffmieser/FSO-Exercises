@@ -6,6 +6,7 @@ const Header = (props) => {
 }
 
 const Content = (props) =>{
+  //props now equals the parts array
   return(
     <div>
       <Part name={props.parts[0].part1} exercise={props.parts[0].exercises1}/>
@@ -42,7 +43,6 @@ const App = () =>{
   ]
   
   const total = parts[0].exercises1 + parts[1].exercises2 + parts[2].exercises3;
-  console.log(total);
 
   return (
     <div>
