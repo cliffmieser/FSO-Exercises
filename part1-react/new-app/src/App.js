@@ -5,25 +5,23 @@ const Header = (props) => {
   
 }
 
-const Content = (props) =>{
-  //props now equals an object 'props' with parts array
-  console.log(props.parts); //1st
-  const parts = props.parts; 
+const Content = ({parts}) =>{
+  //recieved the array 'parts' via destructuring
+  console.log(parts); //1st log
   return(
     <div>
-      <Part prop={parts[0].name} exercises={parts[0].exercises}/>
-      <Part prop={parts[1].name} exercises={parts[1].exercises}/>
-      <Part prop={parts[2].name} exercises={parts[2].exercises}/>
-
+      <Part name={parts[0].name} exercises={parts[0].exercises}/>
+      <Part name={parts[1].name} exercises={parts[1].exercises}/>
+      <Part name={parts[2].name} exercises={parts[2].exercises}/>
     </div>
   )
 }
 
 
 const Part = (prop) =>{
-  console.log(prop); //2nd
+  console.log(prop); //2nd log (prop object with properties 'name' and 'exercises')
   return(
-    <p>{prop.prop} {prop.exercises}</p>
+    <p>{prop.name} {prop.exercises}</p>
   ) 
 
 }
