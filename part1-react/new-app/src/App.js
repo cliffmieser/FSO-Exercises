@@ -1,13 +1,12 @@
-const Header = (props) => {
+const Header = ({course}) => {
   return(
-    <h1>{props.course}</h1>
+    <h1>{course}</h1>
   )
   
 }
 
-const Content = ({parts}) =>{
+const Content = ( {parts} ) =>{
   //recieved the array 'parts' via destructuring
-  console.log(parts); //1st log
   return(
     <div>
       <Part name={parts[0].name} exercises={parts[0].exercises}/>
@@ -18,10 +17,9 @@ const Content = ({parts}) =>{
 }
 
 
-const Part = (prop) =>{
-  console.log(prop); //2nd log (prop object with properties 'name' and 'exercises')
+const Part = ({ name, exercises }) =>{
   return(
-    <p>{prop.name} {prop.exercises}</p>
+    <p>{name} {exercises}</p>
   ) 
 
 }
@@ -37,30 +35,31 @@ const Total = (props) =>{
 
 const App = () => {
   //const definations
-  const course = "Half Stack app development";
-  const parts = [
-    {
-      name: 'Fundamentals of React',
-      exercises: 10
-    },
-    {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
-
- 
-  
-  const total = parts[0].exercises + parts[1].exercises + parts[2].exercises;
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+   
+  const total = course.parts[0].exercises + course.parts[1].exercises + course.parts[2].exercises;
+  console.log(`total is ${total} and the type is ${typeof(total)}`);
 
   return (
     <div>
-      <Header course={course}/>
-      <Content parts={parts}/>
+      <Header course={course.name}/>
+      <Content parts={course.parts}/>
       <Total total={total}/>
      
 
