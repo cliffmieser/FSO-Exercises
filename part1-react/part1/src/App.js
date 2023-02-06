@@ -1,35 +1,45 @@
-// const Hello = (props) => {
-//   console.log(props);
-//   return (
-//     <div>
-//       <p>Hello {props.name}, you are {props.age} years old!</p>
-//     </div>
-//   )
-// }
+import { useState } from 'react'
 
-const Footer = () =>{
+
+const Display = (props) => {
   return(
-    <div>
-      greeting app created by <a href='https://github.com/cliffmieser'>cliffmieser</a>
-    </div>
+    <div>{props.counter}</div>
   )
 }
+
+const Button = (props) => {
+  return(
+    <button onClick={props.onClick}>
+       {props.text}
+    </button>
+  )
+}
+
 
 const App = () => {
-  const friends = [
-    {name: 'Peter', age: 4},
-    {name: 'Maya', age: 10}
-  ]
+  const [ counter, setCounter ] = useState(0);
 
-  return(
+  const increaseByOne = () => setCounter(counter + 1);
+  const decreaseByOne = () => setCounter(counter - 1);
+  const setToZero = () => setCounter(0);
+
+  return (
     <div>
-      <p>{friends[0].name} {friends[0].age}</p>
-      <p>{friends[1].name} {friends[1].age}</p>
+      <Display counter={counter}/>
+      <Button 
+        onClick={increaseByOne}
+        text='plus'
+        />
+        <Button 
+          onClick={setToZero}
+          text='zero' 
+          />
+        <Button 
+          onClick={decreaseByOne}
+          text='minus'
+          />
     </div>
   )
-  
 }
 
-
-// Line needed for code and app to function:
 export default App
