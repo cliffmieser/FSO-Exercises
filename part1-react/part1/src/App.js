@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 
-// const Display = ({ counter }) => <div>{counter}</div>
+const Display = ({ counter }) => <div>{counter}</div>
 // const Button = ({ onClick, text}) => <button onClick={onClick}>{text}</button>
 
 const History = ({allClicks}) =>{
@@ -70,14 +70,19 @@ function App(){
   }
 
   //a fucntion that returns a function
-  const hello = () => {
-    const handler = () => console.log('hello world');
-    return handler;
+  const hello = (who) => () => {
+    console.log('Hello there', who);
   }
 
   const handleClick = () =>{
     setValue(0);
     console.log('button clicked');
+  }
+
+  const setToValue = (newValue) =>{
+    console.log('value currently', newValue); //print new val to console
+    setValue(newValue);
+
   }
 
   return (
@@ -89,7 +94,13 @@ function App(){
       {right}
       <History allClicks={allClicks}/>
       {value}
-      <button onClick={hello()}>button</button>
+
+      <Display value={value} />
+      <Button handleClick={() => setToValue(1000)} text='thousand' />
+      <Button handleClick={() => setToValue(0)} text='reset' />
+      <Button handleClick={() => setToValue(value + 1)} text='increment' />
+
+
     </div>
   )
 }
