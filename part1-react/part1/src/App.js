@@ -34,6 +34,8 @@ function App(){
   const [right, setRight] = useState(0);
   const [allClicks, setAll] = useState([]);
 
+  const [value, setValue] = useState(10);
+
 
   const setZero = () =>{
     //sets left and right properties to 0
@@ -67,6 +69,17 @@ function App(){
     
   }
 
+  //a fucntion that returns a function
+  const hello = () => {
+    const handler = () => console.log('hello world');
+    return handler;
+  }
+
+  const handleClick = () =>{
+    setValue(0);
+    console.log('button clicked');
+  }
+
   return (
     <div>
       {left}
@@ -75,6 +88,8 @@ function App(){
       <Button handleClick={handleRightClick} text='right' />
       {right}
       <History allClicks={allClicks}/>
+      {value}
+      <button onClick={hello()}>button</button>
     </div>
   )
 }
