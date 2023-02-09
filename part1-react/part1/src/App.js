@@ -1,9 +1,33 @@
 import { useState } from 'react'
 
 
-const Display = ({ counter }) => <div>{counter}</div>
+// const Display = ({ counter }) => <div>{counter}</div>
+// const Button = ({ onClick, text}) => <button onClick={onClick}>{text}</button>
 
-const Button = ({ onClick, text}) => <button onClick={onClick}>{text}</button>
+const History = ({allClicks}) =>{
+  if (allClicks.length === 0){
+    return(
+      <div>
+        This app is used by pressing the buttons
+      </div>
+    )
+  }
+
+  return(
+    <div>
+      button press history: {allClicks.join(' ')}
+    </div>
+  )
+}
+
+//Button component
+const Button = ({handleClick, text}) => (
+  <button onClick={handleClick}>
+    {text}
+  </button>
+)
+
+
 
 function App(){
   const [left, setLeft] = useState(0);
@@ -46,11 +70,11 @@ function App(){
   return (
     <div>
       {left}
-      <button onClick={handleLeftClick}>left</button>
-      <button onClick={setZero}>zero</button>
-      <button onClick={handleRightClick}>right</button>
+      <Button handleClick={handleLeftClick} text='left'/>
+      <Button handleClick={setZero} text='zero'/>
+      <Button handleClick={handleRightClick} text='right' />
       {right}
-      <p>{allClicks.join(' ')}</p>
+      <History allClicks={allClicks}/>
     </div>
   )
 }
