@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 //button component
-const Button = ({ handleRating, text }) => (
+const Button = ({handleRating, text}) => (
   <button onClick={handleRating}>
     {text}
   </button>
