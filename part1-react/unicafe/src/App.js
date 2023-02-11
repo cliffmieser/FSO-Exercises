@@ -14,6 +14,17 @@ const Statistics = ( {showStat, text} ) => {
   )
 }
 
+//show total, average, and positive stats
+const Totals = ( {total, average} ) => {
+  return(
+    <div>
+      <p><b>Total:</b> {total}</p>
+      <p><b>Average:</b> {average}</p>
+    </div>
+  )
+  
+}
+
 
 function App() {
   //save clicks of each button to it's own state
@@ -21,6 +32,19 @@ function App() {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
   const [allClicks, setAll] = useState([]);
+  const allRatings = {
+    good: good,
+    neutral: neutral,
+    bad: bad
+  }
+
+  //continue from here start
+  const total = allRatings.good + allRatings.neutral + allRatings.bad;
+  console.log(total);
+
+  const average = (allRatings.good + allRatings.neutral + allRatings.bad) / 3;
+  console.log(average);
+  //cont  end
 
   //function definitions
   const handleGood = () => {
@@ -54,8 +78,7 @@ function App() {
       <Statistics showStat={good} text='good'/>
       <Statistics showStat={neutral} text='neutral'/>
       <Statistics showStat={bad}  text='bad'/>
-
-      
+      <Totals total={total} average={average}/>
     </div>
   );
 }
