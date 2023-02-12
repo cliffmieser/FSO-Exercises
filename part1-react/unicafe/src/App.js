@@ -39,9 +39,10 @@ function App() {
   }
 
   //continue from here start
-  const total = allRatings.good + allRatings.neutral + allRatings.bad;
-  // let total = 0;
-  // total = Object.values(allRatings).forEach(val => {total += val});
+  // const total = allRatings.good + allRatings.neutral + allRatings.bad;
+  let total = 0;
+  let ratingsArr = Object.values(allRatings);
+  ratingsArr.forEach(num => total += num);
   console.log(total);
 
   const average = (allRatings.good + allRatings.neutral + allRatings.bad) / 3;
